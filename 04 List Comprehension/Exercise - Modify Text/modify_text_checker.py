@@ -25,7 +25,11 @@ def check_disemvowel(string_in, reference_result):
 
     assert type(student_result) == str, "When disemvowel was called with the string '{}' the returned value was {} which has the type {} when it should be a str. Check the logic of your function to make sure you return a str.".format(string_in, student_result, type(student_result))
 
-    assert student_result == reference_result, "When disemvowel was called with the string '{}' the returned value was {} when it should have been {} when it should be a str. Check the logic of your function to make sure you return a str.".format(string_in, student_result, reference_result)
+    assert student_result == reference_result, "When disemvowel was called with the string '{}' the returned value was '{}' when it should have been '{}'. Check the logic of your function.".format(string_in, student_result, reference_result)
 
 # Check disemvowel behaves as expected
 check_disemvowel("thnx", "thnx")
+check_disemvowel("fortnight", "frtnght")
+check_disemvowel("fun coding", "fn cdng")
+check_disemvowel("LATENT HEAT", "LTNT HT")
+check_disemvowel("Awesome Programming Skillz", "wsm Prgrmmng Skllz")
