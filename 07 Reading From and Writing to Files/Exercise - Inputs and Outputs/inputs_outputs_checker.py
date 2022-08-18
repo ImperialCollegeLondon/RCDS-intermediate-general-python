@@ -39,6 +39,8 @@ check_compounds_from_file(os.path.join(sample_directory_path, "order_1.txt"), {"
 # Check the correct dictionary is returned from order1.txt
 check_compounds_from_file(os.path.join(sample_directory_path, "order_2.txt"), {"Ne": 1, "NaCl": 3.5})
 
+print("Checks on get_compounds_from_file all passed successfully")
+
 #==============================================================================================================================================
 
 try:
@@ -79,6 +81,8 @@ check_atoms_from_file(os.path.join(sample_directory_path, "order_1.txt"), {"C":1
 
 # Check the correct dictionary is returned from order1.txt
 check_atoms_from_file(os.path.join(sample_directory_path, "order_2.txt"), {"Ne": 1, "Na": 3.5, "Cl": 3.5})
+
+print("Checks on get_atoms_from_file all passed successfully.")
 
 #==============================================================================================================================================
 
