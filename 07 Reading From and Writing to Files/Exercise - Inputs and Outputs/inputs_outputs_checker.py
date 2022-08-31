@@ -4,9 +4,9 @@ import os
 try:
     from inputs_outputs import get_compounds_from_file
 except ModuleNotFoundError:
-    assert False, "inputs_outputs_checker.py tried to import from the file compound_summaries.py but the file didn't exist. Check it is present and the name is spelt correctly."
+    assert False, "inputs_outputs_checker.py tried to import from the file inputs_outputs.py but the file didn't exist. Check it is present and the name is spelt correctly."
 except ImportError:
-    assert False, "inputs_outputs_checker.py tried to import the function 'get_compounds_from_file' from the file compound_summaries.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
+    assert False, "inputs_outputs_checker.py tried to import the function 'get_compounds_from_file' from the file inputs_outputs.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
 
 # Check get_compounds_from_file is a function
 assert type(get_compounds_from_file) == FunctionType, "get_compounds_from_file is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
@@ -46,9 +46,9 @@ print("Checks on get_compounds_from_file all passed successfully")
 try:
     from inputs_outputs import get_atoms_from_file
 except ModuleNotFoundError:
-    assert False, "inputs_outputs_checker.py tried to import from the file compound_summaries.py but the file didn't exist. Check it is present and the name is spelt correctly."
+    assert False, "inputs_outputs_checker.py tried to import from the file inputs_outputs.py but the file didn't exist. Check it is present and the name is spelt correctly."
 except ImportError:
-    assert False, "inputs_outputs_checker.py tried to import the function 'get_atoms_from_file' from the file compound_summaries.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
+    assert False, "inputs_outputs_checker.py tried to import the function 'get_atoms_from_file' from the file inputs_outputs.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
 
 # Check get_atoms_from_file is a function
 assert type(get_atoms_from_file) == FunctionType, "get_atoms_from_file is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
@@ -89,9 +89,9 @@ print("Checks on get_atoms_from_file all passed successfully.")
 try:
     from inputs_outputs import write_atoms_from_file
 except ModuleNotFoundError:
-    assert False, "inputs_outputs_checker.py tried to import from the file compound_summaries.py but the file didn't exist. Check it is present and the name is spelt correctly."
+    assert False, "inputs_outputs_checker.py tried to import from the file inputs_outputs.py but the file didn't exist. Check it is present and the name is spelt correctly."
 except ImportError:
-    assert False, "inputs_outputs_checker.py tried to import the function 'write_atoms_from_file' from the file compound_summaries.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
+    assert False, "inputs_outputs_checker.py tried to import the function 'write_atoms_from_file' from the file inputs_outputs.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
 
 # Check write_atoms_from_file is a function
 assert type(write_atoms_from_file) == FunctionType, "write_atoms_from_file is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
