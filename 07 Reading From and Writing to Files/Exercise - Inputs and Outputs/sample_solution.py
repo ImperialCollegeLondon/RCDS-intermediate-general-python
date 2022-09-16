@@ -4,9 +4,6 @@ def get_compounds_from_file(path):
     with open(path) as f:
         lines = f.readlines()
 
-    print(lines)
-    if len(lines) > 0:
-        print(lines[0].split())
     compounds = {line.split()[0]: float(line.split()[1]) for line in lines}
 
     return(compounds)
