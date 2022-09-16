@@ -12,7 +12,6 @@ except ImportError:
 assert type(get_compounds_from_file) == FunctionType, "get_compounds_from_file is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
 sample_directory_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample_orders")
-print(sample_directory_path)
 
 assert os.path.isdir(sample_directory_path), "The directory sample_orders does not exist to contain the input files for this exercise"
 
