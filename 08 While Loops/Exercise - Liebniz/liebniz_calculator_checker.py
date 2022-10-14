@@ -7,6 +7,9 @@ except ModuleNotFoundError:
 except ImportError:
     assert False, "liebniz_checker.py tried to import the function 'liebniz' from the file liebniz_calculator.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
 
+# Check liebniz is a function
+assert type(liebniz) == FunctionType, "liebniz is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
+
 # This code defines a decorator which will case a TimeoutError if a function takes too long to run 
 import multiprocessing.pool
 import functools
