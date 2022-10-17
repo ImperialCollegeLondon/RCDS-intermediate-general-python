@@ -14,3 +14,10 @@ def wet_bulb_stull(dry_temperature, relative_humidity):
     wet_temeprature =  term_1 + term_2  + term_3 + term_4 + term_5
 
     return(wet_temeprature)
+
+def habitability_analyser (dry_temperatures, relatives_humidities):
+    for dry_temperature, relative_humidity in zip(dry_temperatures, relatives_humidities):
+        if wet_bulb_stull(dry_temperature, relative_humidity) > 35:
+            return(True)
+        
+    return(False)
