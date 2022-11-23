@@ -3,7 +3,7 @@ def count_atoms(formula, element):
         i_element = formula.find(element)
         if i_element < 0:
             return(0)
-        elif i_element + 2 >= len(formula):
+        elif i_element + 2 == len(formula):
             return(1)
         elif formula[i_element + 2].isalpha():
             return(1)
