@@ -64,3 +64,5 @@ assert C_UO2 == 0, "When looking for the number of atoms of C in UO2, {} was ret
 # Check 1 is returned when C is searched for in HCN
 C_HCN = count_atoms("HCN", "C")
 assert C_HCN == 1, "When looking for the number of atoms of C in HCN, {} was returned instead of 1. Check your logic.".format(C_HCN)
+
+print("Congratulations, all the tests passed!")
