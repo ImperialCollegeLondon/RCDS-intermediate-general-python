@@ -27,15 +27,18 @@ def timeout(max_timeout):
         return func_wrapper
     return timeout_decorator
 
-@timeout(10)
+@timeout(5)
 def liebniz_wrapper(epsilon):
     return(liebniz(epsilon))
 
 def check_liebniz(epsilon, reference_value, tolerance):
     try:
         student_value = liebniz_wrapper(epsilon)
-    except:
-        print("When the function 'liebniz' was called with a value of {} for epsilon, the following exception was raised. If this exception is a TimeOutError it may indicate you experienced an infinite loop, as your function took more than 10s return a value. Check the logic of your code.".format(epsilon))
+    except multiprocessing.context.TimeoutError as ex:
+        print("When the function 'liebniz' was called with a value of {} for epsilon, your code executed for more than 5s. This may indicate your code contains an infinite loop. Check the logic of your code. The TimeOurError raised is displayed below".format(epsilon))
+        raise
+    except Exception as ex:
+        print("When the function 'liebniz' was called with a value of {} for epsilon, the following exception was raised. Check the logic of your code.".format(epsilon))
         raise
 
     assert type(student_value) == float or type(student_value) == int, "When the function 'liebniz' was called with a value of {} for epsilon, the value returned had a type of {} instead of float or int. Check the logic of your code.".format(epsilon, type(student_value))
