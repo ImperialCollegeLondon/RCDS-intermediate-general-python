@@ -3,9 +3,9 @@ from types import FunctionType
 try:
     from liebniz_calculator import liebniz
 except ModuleNotFoundError:
-    assert False, "liebniz_checker.py tried to import from the file liebniz.py but the file didn't exist. Check it is present and the name is spelt correctly."
+    assert False, "liebniz_calculator_checker.py tried to import from the file liebniz_calculator.py but the file didn't exist. Check it is present and the name is spelt correctly."
 except ImportError:
-    assert False, "liebniz_checker.py tried to import the function 'liebniz' from the file liebniz_calculator.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
+    assert False, "liebniz_calculator_checker.py tried to import the function 'liebniz' from the file liebniz_calculator.py. The file existed, but the function didn't. Check the function is in that file and that the name is spelt correctly."
 
 # Check liebniz is a function
 assert type(liebniz) == FunctionType, "liebniz is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
