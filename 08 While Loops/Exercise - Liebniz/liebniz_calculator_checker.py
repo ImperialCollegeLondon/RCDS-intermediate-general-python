@@ -35,8 +35,7 @@ def check_liebniz(epsilon, reference_value, tolerance):
     try:
         student_value = liebniz_wrapper(epsilon)
     except multiprocessing.context.TimeoutError as ex:
-        print("When the function 'liebniz' was called with a value of {} for epsilon, your code executed for more than 5s. This may indicate your code contains an infinite loop. Check the logic of your code. The TimeOurError raised is displayed below".format(epsilon))
-        raise
+        raise TimeoutError("When the function 'liebniz' was called with a value of {} for epsilon, your code executed for more than 5s. This may indicate your code contains an infinite loop. Check the logic of your code. The TimeOurError raised is displayed below".format(epsilon)) from ex
     except Exception as ex:
         print("When the function 'liebniz' was called with a value of {} for epsilon, the following exception was raised. Check the logic of your code.".format(epsilon))
         raise
