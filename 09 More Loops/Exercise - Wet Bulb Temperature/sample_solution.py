@@ -14,3 +14,17 @@ def wet_bulb_stull(dry_temperature, relative_humidity):
     wet_temperature =  term_1 + term_2  + term_3 + term_4 + term_5
 
     return(wet_temperature)
+
+def habitability_analyser(dry_temperatures, relative_humidities):
+    for dry_temperature, relative_humidity in zip(dry_temperatures, relative_humidities):
+        if wet_bulb_stull(dry_temperature, relative_humidity) > 30:
+            return(False)
+        
+    return(True)
+
+def find_hot_indexes(dry_temperatures, relative_humidities):
+    wet_temperatures = tuple(wet_bulb_stull(dry_temperature, relative_humidity) for dry_temperature, relative_humidity in zip(dry_temperatures, relative_humidities))
+
+    hot_indexes = [index for index, wet_temperature in enumerate(wet_temperatures) if wet_temperature > 30]
+
+    return(hot_indexes)
