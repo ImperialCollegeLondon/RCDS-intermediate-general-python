@@ -1,21 +1,24 @@
 from compound_summaries import find_elements_present
 from inputs_outputs import get_compounds_from_file
 
+
 def check_fissile(compounds):
     elements = find_elements_present(compounds)
 
     for fissile_element in ("U", "Pu", "Th"):
         if fissile_element in elements:
-            return(True)
+            return (True)
     else:
-        return(False)
+        return (False)
+
 
 def check_poisons(compounds):
     for compound in compounds:
         if compound in ("HCN", "Cl2"):
-            return(True)
+            return (True)
     else:
-        return(False)
+        return (False)
+
 
 def order_approver(path, *checker_functions, authorisation_code=None, **kwargs):
     if kwargs:
@@ -25,7 +28,7 @@ def order_approver(path, *checker_functions, authorisation_code=None, **kwargs):
 
     if authorisation_code == "UUDDLRLRBAS" or authorisation_code == "rosebud":
         print("Authorisation code accepted")
-        return(True)
+        return (True)
     elif authorisation_code is not None:
         raise ValueError("Invalid authorisation code")
 
@@ -39,7 +42,8 @@ def order_approver(path, *checker_functions, authorisation_code=None, **kwargs):
         print("All checks passed, the order is approved!")
 
     print("Order checked")
-    return(approved)
+    return (approved)
+
 
 # order_approver("10 Function Arguments\Exercise - Authorisation\\batch.txt", check_fissile, check_poisons)
 

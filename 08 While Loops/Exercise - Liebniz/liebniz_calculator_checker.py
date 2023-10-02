@@ -1,4 +1,6 @@
 from types import FunctionType
+import multiprocessing.pool
+import functools
 
 try:
     from liebniz_calculator import liebniz
@@ -10,9 +12,8 @@ except ImportError:
 # Check liebniz is a function
 assert type(liebniz) == FunctionType, "liebniz is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
-# This code defines a decorator which will case a TimeoutError if a function takes too long to run 
-import multiprocessing.pool
-import functools
+
+# This code defines a decorator which will case a TimeoutError if a function takes too long to run
 def timeout(max_timeout):
     """Timeout decorator, parameter in seconds."""
     def timeout_decorator(item):
@@ -27,22 +28,25 @@ def timeout(max_timeout):
         return func_wrapper
     return timeout_decorator
 
+
 @timeout(5)
 def liebniz_wrapper(epsilon):
-    return(liebniz(epsilon))
+    return (liebniz(epsilon))
+
 
 def check_liebniz(epsilon, reference_value, tolerance):
     try:
         student_value = liebniz_wrapper(epsilon)
     except multiprocessing.context.TimeoutError as ex:
         raise TimeoutError("When the function 'liebniz' was called with a value of {} for epsilon, your code executed for more than 5s. This may indicate your code contains an infinite loop. Check the logic of your code. The TimeOurError raised is displayed below".format(epsilon)) from ex
-    except Exception as ex:
+    except Exception:
         print("When the function 'liebniz' was called with a value of {} for epsilon, the following exception was raised. Check the logic of your code.".format(epsilon))
         raise
 
     assert type(student_value) == float or type(student_value) == int, "When the function 'liebniz' was called with a value of {} for epsilon, the value returned had a type of {} instead of float or int. Check the logic of your code.".format(epsilon, type(student_value))
 
     assert abs(student_value - reference_value) < tolerance, "When the function 'liebniz' was called with a value of {} for epsilon, the resulting answer should have been {}, but it was {}. Check your logic. In particular, make sure you're not including any terms with an absolute value lower than epsilon.".format(epsilon, reference_value, student_value)
+
 
 check_liebniz(1e-3, 0.7848981638974463, 1e-4)
 

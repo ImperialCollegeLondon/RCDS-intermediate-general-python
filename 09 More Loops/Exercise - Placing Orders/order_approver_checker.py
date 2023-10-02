@@ -23,10 +23,12 @@ fissile_present = check_fissile(input_dictionary)
 assert type(fissile_present) == bool, "check_fissile was passed the dictionary {} and so should have returned False to indicate no fissile elements were present. However, the returned value was not a bool.".format(input_dictionary)
 assert not fissile_present, "check_fissile was passed the dictionary {} and so should have returned False to indicate no fissile elements were present. However, {} was returned instead".format(input_dictionary, fissile_present)
 
+
 def check_check_fissile_true(input_dictionary):
     fissile_present = check_fissile(input_dictionary)
     assert type(fissile_present) == bool, "check_fissile was passed the dictionary {} and so should have returned True to indicate fissile elements were present. However, the returned value was not a bool.".format(input_dictionary)
     assert fissile_present, "check_fissile was passed the dictionary {} and so should have returned True to indicate fissile elements were present. However, {} was returned instead".format(input_dictionary, fissile_present)
+
 
 # Check check_fissile_returns True with various dictionaries containing fissile elements
 check_check_fissile_true({"H2O": 1, "UO2": 0.1})
@@ -36,7 +38,7 @@ check_check_fissile_true({"UF6": 1, "PuO2": 3})
 
 print("Congratulations - your check_fissile function passed all the tests")
 
-#===================================================================================================
+# ===================================================================================================
 
 # Import check_poisons
 try:
@@ -60,10 +62,12 @@ poison_present = check_poisons(input_dictionary)
 assert type(poison_present) == bool, "check_poisons was passed the dictionary {} and so should have returned False to indicate no poison compounds were present. However, the returned value was not a bool.".format(input_dictionary)
 assert not poison_present, "check_poisons was passed the dictionary {} and so should have returned False to indicate no poison compounds were present. However, {} was returned instead".format(input_dictionary, poison_present)
 
+
 def check_check_poisons_true(input_dictionary):
     poison_present = check_poisons(input_dictionary)
     assert type(poison_present) == bool, "check_poisons was passed the dictionary {} and so should have returned True to indicate poison compounds were present. However, the returned value was not a bool.".format(input_dictionary)
     assert poison_present, "check_poisons was passed the dictionary {} and so should have returned True to indicate poisons were present. However, {} was returned instead".format(input_dictionary, poison_present)
+
 
 # Check check_poisons_returns True with various dictionaries containing poison compounds
 check_check_poisons_true({"H2O": 1, "HCN": 0.1})
@@ -72,7 +76,7 @@ check_check_poisons_true({"HCN": 0.1, "Cl2": 1, "O2": 3})
 
 print("Congratulations - your check_poisons function passed all the tests")
 
-#===================================================================================================
+# ===================================================================================================
 
 # Import order_approver
 try:
@@ -86,13 +90,14 @@ except ImportError:
 # Check order_approver is a function
 assert type(order_approver) == FunctionType, "order_approver is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
+
 def check_order_approver(path, reference_outcome, reason=""):
     try:
         order_approver_result = order_approver(path, [check_fissile, check_poisons])
     except FileNotFoundError:
         print("order_approver was asked to check the contents of an order found at '{}' but the following FileNotFoundError was raised. Check the file is in the correct location in your computer.".format(path))
         raise
-    except:
+    except Exception:
         print("order_approver was asked to check the contents of an order found at '{}' but the following exception was raised. Check the logic of your program.".format(path))
         raise
 
@@ -105,7 +110,8 @@ def check_order_approver(path, reference_outcome, reason=""):
 
     assert order_approver_result == reference_outcome, error_message
 
-#Find the absolute path of the sample_orders directory
+
+# Find the absolute path of the sample_orders directory
 sample_directory_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sample_orders")
 
 # Check order_approver returns True for an empty file

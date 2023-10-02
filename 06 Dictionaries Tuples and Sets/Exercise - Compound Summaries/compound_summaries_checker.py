@@ -10,9 +10,10 @@ except ImportError:
 # Check count_atoms_in_compounds is a function
 assert type(count_atoms_in_compounds) == FunctionType, "count_atoms_in_compounds is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
+
 def get_compound_list_string_summary(compound_moles):
     if len(compound_moles) == 0:
-        return("an empty dictionary containing no compounds ")
+        return ("an empty dictionary containing no compounds ")
     result = ""
     for i, formula in enumerate(compound_moles):
         result += "{} mole".format(compound_moles[formula])
@@ -25,7 +26,7 @@ def get_compound_list_string_summary(compound_moles):
             result += ", "
         else:
             result += " "
-    return(result)
+    return (result)
 
 
 def check_atoms_counts_match(compound_moles, reference_dictionary):
@@ -35,6 +36,7 @@ def check_atoms_counts_match(compound_moles, reference_dictionary):
 
     if student_dictionary != reference_dictionary:
         raise AssertionError("When count_atoms_in_compounds was asked to count the moles of elements in {}the returned value was {}, not {}. Ordering does not matter, but the keys/values aren't the same. Check you logic.".format(get_compound_list_string_summary(compound_moles), student_dictionary, reference_dictionary))
+
 
 # Check an empty compound_moles results in an empty dictionary returned from count_atoms_in_compounds
 check_atoms_counts_match({}, {})
@@ -63,7 +65,7 @@ check_atoms_counts_match({"CO2": 2, "CaCO3": 3}, {"Ca": 3, "C": 5, "O": 13})
 # Check count_atoms_in_compounds correctly predicts the number of moles of elements in 2 moles of O2
 check_atoms_counts_match({"UO2": 1, "HNO3": 1, "H2O": 10}, {"U": 1, "O": 15, "H": 21, "N": 1})
 
-#===============================================================================================================================================================
+# ===============================================================================================================================================================
 
 try:
     from compound_summaries import find_elements_present
@@ -75,10 +77,11 @@ except ImportError:
 # Check find_elements_present is a function
 assert type(find_elements_present) == FunctionType, "find_elements_present is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
+
 def check_element_sets_match(compound_moles, reference_set):
     student_set = find_elements_present(compound_moles)
     if type(student_set) != set:
-        raise AssertionError("When find_elements_present was asked to construct a set containng the elements present in {}the returned value was {}, not a set. Check you're creating and returning a set in all cases.".format(get_compound_list_string_summary(compound_moles), type(student_set)))
+        raise AssertionError("When find_elements_present was asked to construct a set containing the elements present in {}the returned value was {}, not a set. Check you're creating and returning a set in all cases.".format(get_compound_list_string_summary(compound_moles), type(student_set)))
 
     if len(student_set) == 0:
         student_set_description = "an empty set"
@@ -91,10 +94,11 @@ def check_element_sets_match(compound_moles, reference_set):
         reference_set_description = str(reference_set)
 
     if student_set != reference_set:
-        error_text = "When find_elements_present was asked to construct a set containng the elements present in {}the returned value was {}, not {}.".format(get_compound_list_string_summary(compound_moles), student_set_description, reference_set_description)
+        error_text = "When find_elements_present was asked to construct a set containing the elements present in {}the returned value was {}, not {}.".format(get_compound_list_string_summary(compound_moles), student_set_description, reference_set_description)
         if len(student_set) > 0 and len(reference_set) > 0:
             error_text += " Ordering does not matter, but the values aren't the same. Check you logic."
         raise AssertionError(error_text)
+
 
 # Check an empty compound_moles results in an empty set returned from find_elements_present
 check_element_sets_match({}, set())

@@ -15,14 +15,16 @@ from types import FunctionType
 # Check factorial_exercise.factorial is a function
 assert type(factorial_exercise.factorial) == FunctionType, "factorial_exercise.factorial is not a function. Make sure you're using 'def' to define it as a function and have not redefined it later in your script."
 
+
 # Define a function to check the correct value is returned
 def check_factorial_value(input, reference_output):
     try:
         student_output = factorial_exercise.factorial(input)
-    except:
+    except Exception:
         print("When factorial was called with the value '{}', the following exception was raised. Check its contents carefully and amend your code.".format(input))
 
     assert student_output == reference_output, "When factorial was called with the value '{}', your code returned '{}' when it should have returned '{}'. Check the logic of your code to find out why it produced the wrong answer.".format(input, student_output, reference_output)
+
 
 # Check the values of the first few factorials
 check_factorial_value(0, 1)
@@ -40,7 +42,7 @@ try:
     factorial_exercise.factorial(-1)
 except ValueError:
     raised = True
-except:
+except Exception:
     print("When factorial was called with a value of -1, a ValueError should have been raised. Instead, the following exception was raised. Read it carefully and use it to debug your code.")
     raise
 

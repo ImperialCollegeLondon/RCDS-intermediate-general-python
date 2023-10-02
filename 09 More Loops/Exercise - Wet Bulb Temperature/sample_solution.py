@@ -1,5 +1,6 @@
 from math import atan, sqrt
 
+
 def wet_bulb_stull(dry_temperature, relative_humidity):
     # This function calculates the wet bulb temperature in Celsius according to the Stull formula
     # dry_temperature is the dry bulb temperature in Celsius (e.g. it might have the value 20)
@@ -11,20 +12,22 @@ def wet_bulb_stull(dry_temperature, relative_humidity):
     term_3 = - atan(relative_humidity - 1.676331)
     term_4 = 0.00391838 * relative_humidity ** (3/2) * atan(0.023101 * relative_humidity)
     term_5 = - 4.686035
-    wet_temperature =  term_1 + term_2  + term_3 + term_4 + term_5
+    wet_temperature = term_1 + term_2 + term_3 + term_4 + term_5
 
-    return(wet_temperature)
+    return (wet_temperature)
+
 
 def habitability_analyser(dry_temperatures, relative_humidities):
     for dry_temperature, relative_humidity in zip(dry_temperatures, relative_humidities):
         if wet_bulb_stull(dry_temperature, relative_humidity) > 30:
-            return(False)
-        
-    return(True)
+            return (False)
+
+    return (True)
+
 
 def find_hot_indexes(dry_temperatures, relative_humidities):
     wet_temperatures = tuple(wet_bulb_stull(dry_temperature, relative_humidity) for dry_temperature, relative_humidity in zip(dry_temperatures, relative_humidities))
 
     hot_indexes = [index for index, wet_temperature in enumerate(wet_temperatures) if wet_temperature > 30]
 
-    return(hot_indexes)
+    return (hot_indexes)

@@ -12,7 +12,8 @@ def count_atoms_in_compounds(compound_moles):
                     atom_totals[element] += n_atoms * compound_moles[compound_formula]
                 except KeyError:
                     atom_totals[element] = n_atoms * compound_moles[compound_formula]
-    return(atom_totals)
+    return (atom_totals)
+
 
 def find_elements_present(compound_moles):
     elements_present = set()
@@ -22,4 +23,4 @@ def find_elements_present(compound_moles):
             n_atoms = count_atoms(compound_formula, element)
             if n_atoms:
                 elements_present.add(element)
-    return(elements_present)
+    return (elements_present)

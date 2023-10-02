@@ -1,21 +1,24 @@
 from compound_summaries import find_elements_present
 from inputs_outputs import get_compounds_from_file
 
+
 def check_fissile(compounds):
     elements = find_elements_present(compounds)
 
     for fissile_element in ("U", "Pu", "Th"):
         if fissile_element in elements:
-            return(True)
+            return (True)
     else:
-        return(False)
+        return (False)
+
 
 def check_poisons(compounds):
     for compound in compounds:
         if compound in ("HCN", "Cl2"):
-            return(True)
+            return (True)
     else:
-        return(False)
+        return (False)
+
 
 def order_approver(path, checker_functions):
     compounds = get_compounds_from_file(path)
@@ -30,4 +33,4 @@ def order_approver(path, checker_functions):
         print("All checks passed, the order is approved!")
 
     print("Order checked")
-    return(approved)        
+    return (approved)      

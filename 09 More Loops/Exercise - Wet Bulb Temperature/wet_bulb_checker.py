@@ -11,16 +11,18 @@ except ImportError:
 # Check wet_bulb_stull is a function
 assert type(wet_bulb_stull) == FunctionType, "wet_bulb_stull is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
+
 def check_web_bulb_stull(dry_temperature, relative_humidity, reference_wet_temperature):
     try:
         wet_temperature = wet_bulb_stull(dry_temperature, relative_humidity)
-    except:
+    except Exception:
         print("When called with a temperature {}C and a relative humidity of {}%, wet_bulb_stull raised the following exception. You may have modified he function - try re-downloading the file if this problem persists.".format(dry_temperature, relative_humidity))
         raise
 
     assert type(wet_temperature) == float, "When called with a temperature {}C and a relative humidity of {}%, wet_bulb_stull returned a value which was of the type {} instead of a float. You may have modified he function - try re-downloading the file if this problem persists.".format(dry_temperature, relative_humidity, type(wet_temperature))
 
     assert abs(wet_temperature - reference_wet_temperature) < 0.1, "When called with a temperature {}C and a relative humidity of {}%, wet_bulb_stull returned {}C as a wet bulb temperature, instead of te correct value of {}C. You may have modified he function - try re-downloading the file if this problem persists.".format(dry_temperature, relative_humidity, wet_temperature, reference_wet_temperature)
+
 
 check_web_bulb_stull(10, 50, 5.101)
 check_web_bulb_stull(35, 99, 34.96)
@@ -37,16 +39,18 @@ except ImportError:
 # Check habitability_analyser is a function
 assert type(habitability_analyser) == FunctionType, "habitability_analyser is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
+
 def habitability_analyser_checker(dry_temperatures, relative_humidities, reference_result):
     try:
         student_result = habitability_analyser(dry_temperatures, relative_humidities)
-    except:
+    except Exception:
         print("When habitability_analyser was called with the dry temperatures of {} and relative humidities of {} the following exception was raised. Check the logic of your code.".format(dry_temperatures, relative_humidities))
         raise
 
     assert type(student_result) == bool, "When habitability_analyser was called with the dry temperatures {} and relative humidities {} the returned result had a type of {} instead of bool. Check the logic of your code.".format(dry_temperatures, relative_humidities, type(student_result))
 
     assert student_result == reference_result, "When habitability_analyser was called with the dry temperatures  {} and relative humidities {} the returned result a value of {} instead of the correct result of {}. Check the logic of your code.".format(dry_temperatures, relative_humidities, student_result, reference_result)
+
 
 # Check habitability_analyser returns the correct values
 habitability_analyser_checker((), (), True)
@@ -71,16 +75,18 @@ except ImportError:
 # Check find_hot_indexes is a function
 assert type(find_hot_indexes) == FunctionType, "find_hot_indexes is not a function. Make sure you're using def to define it as a function and have not redefined it later in your script."
 
+
 def find_hot_indexes_checker(dry_temperatures, relative_humidities, reference_result):
     try:
         student_result = find_hot_indexes(dry_temperatures, relative_humidities)
-    except:
+    except Exception:
         print("When find_hot_indexes was called with the dry temperatures of {} and relative humidities of {} the following exception was raised. Check the logic of your code.".format(dry_temperatures, relative_humidities))
         raise
 
     assert type(student_result) == list, "When find_hot_indexes was called with the dry temperatures {} and relative humidities {} the returned result had a type of {} instead of list. Check the logic of your code.".format(dry_temperatures, relative_humidities, type(student_result))
 
     assert student_result == reference_result, "When find_hot_indexes was called with the dry temperatures  {} and relative humidities {} the returned result a value of {} instead of the correct result of {}. Check the logic of your code.".format(dry_temperatures, relative_humidities, student_result, reference_result)
+
 
 # Check find_hot_indexes_checker returns the correct values
 find_hot_indexes_checker((), (), [])

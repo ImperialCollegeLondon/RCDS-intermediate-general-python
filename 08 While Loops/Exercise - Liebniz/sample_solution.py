@@ -4,9 +4,9 @@ def liebniz(epsilon):
     result = 0
 
     while 1 / denominator > epsilon:
-        result += sign/ denominator
+        result += sign / denominator
 
         denominator += 2
         sign *= -1
 
-    return(result)
+    return (result)
