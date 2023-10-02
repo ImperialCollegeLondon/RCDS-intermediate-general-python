@@ -7,5 +7,5 @@ media = {}
 for line in lines:
     x = line.split(": ")
     media[x[0]] = x[1]
-    
+
 print(media)
